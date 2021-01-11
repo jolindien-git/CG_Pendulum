@@ -1,0 +1,9 @@
+{
+	"title": {
+		"2": "Init: down, equilibrium",
+		"1": "Init: down, equilibrium"
+	},
+	"testIn": "3.141592653589793; 0",
+	"isTest": "true",
+	"isValidator": "true"
+}

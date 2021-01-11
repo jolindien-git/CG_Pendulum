@@ -1,0 +1,96 @@
+<div id="statement_back" class="statement_back" style="display:none"></div>
+<div class="statement-body">
+  <!-- GOAL -->
+  <div class="statement-section statement-goal">
+    <h1>
+      <span class="icon icon-goal">&nbsp;</span>
+      <span>The Goal</span>
+    </h1>
+    <div class="statement-goal-content">
+      Try to keep a frictionless pendulum standing up.      
+    </div>
+  </div>
+  <!-- RULES -->
+  <div class="statement-section statement-rules">
+    <h1>
+      <span class="icon icon-rules">&nbsp;</span>
+      <span>Rules</span>
+    </h1>
+    <div>
+      <div class="statement-rules-content">
+	  You are controlling a pendulum. Given measurement values on its state (angle and speed) you choose to apply a <var>torque</var> value in order to stabilize the pendulum. <br>
+        The inverted pendulum swingup problem is a classic problem in the control literature. This version of the problem is adapted from <a href="https://gym.openai.com/envs/Pendulum-v0/">Gym "Pendulum-v0"</a>.<br>
+        <br>
+        The pendulum works as follows:
+        <ul>
+          <li>Every turn it takes a new command <var>torque</var>: <const>-2</const> <= <var>torque</var> <= <const>2</const>.</li>
+        </ul>
+		You <strong>win</strong> if:
+        <ul>
+          <li>You stabilize the pendulum by keeping the angle in [-1; 1] degree during 3 consecutive turns.</li>
+        </ul>
+        You <strong>lose</strong> if:
+        <ul>
+          <li>You mess up.</li>          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- EXPERT RULES -->
+  <div class="statement-section statement-expertrules">
+    <h1>
+      <span class="icon icon-expertrules">&nbsp;</span>
+      <span>Expert Rules</span>
+    </h1>
+    <div class="statement-expert-rules-content">
+      On each turn the pendulum state is computed this way:
+	  <ul>
+        <li>The angle time derivative (the pendulum speed) is computed (given the previous state and the <var>torque</var> value you sent).</li>
+        <li>A new angle is obtained by an Euler integration step.</li>
+        <li>If this angle is in [-1; 1] degree during 3 consecutive turns, you win.</li>        
+      </ul>
+    </div>
+  </div>
+    
+  <!-- PROTOCOL -->
+  <div class="statement-section statement-protocol">
+    <h1>
+      <span class="icon icon-protocol">&nbsp;</span>
+      <span>Game Input</span>
+    </h1>    
+
+    <div class="blk">
+    <div class="title">Input for one game turn</div>
+      <span class="statement-lineno">One line of <const>3</const> floats: <var>cosTheta</var>, <var>sinTheta</var>, <var>dotTheta</var>.
+      <br>
+      <var>cosTheta</var> the cosine of the pendulum angle.
+	  <br>
+	  <var>sinTheta</var> the sine of the pendulum angle.
+	  <br>
+      <var>dotTheta</var> the time derivative of the angle.
+      <br>
+      </span>
+    </div>
+    
+	<div class="blk">
+      <div class="title">Output for one game turn</div>
+      <div class="text"><span class="statement-lineno">One line </span>: one float <var>torque</var>.
+	</div>
+    </div>
+
+	<div class="blk">
+      <div class="title">Constraints</div>
+      <div class="text">
+        <const>-8</const> <= <var>dotTheta</var> <= <const>8</const>
+        <br>
+        <const>-2</const> <= <var>torque</var> <= <const>2</const>
+        <br>
+        <br> Response time for the first turn ≤ <const>1000</const> ms
+        <br> Response time per turn ≤ <const>50</const> ms
+        <br>
+      </div>
+    </div>
+    
+  </div>
+  
+</div>

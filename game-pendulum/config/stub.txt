@@ -1,0 +1,14 @@
+gameloop
+read cosTheta:float sinTheta:float dotTheta:float
+write 1.07
+
+STATEMENT
+Swing up a pendulum.
+
+INPUT
+cosTheta: the cosine of the pendulum angle
+sinTheta: the sine of the angle
+dotTheta: the time derivative of the angle
+
+OUTPUT
+torqueValue

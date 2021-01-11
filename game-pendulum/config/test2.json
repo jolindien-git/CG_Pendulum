@@ -1,0 +1,9 @@
+{
+	"title": {
+		"2": "Init: up, high speed",
+		"1": "Init: up, high speed"
+	},
+	"testIn": "0; -8",
+	"isTest": "true",
+	"isValidator": "true"
+}
