@@ -18,33 +18,10 @@ public class Solution {
             String[] input = s.split(" ");
         	float cosTheta = Float.parseFloat(input[0]);
             float sinTheta = Float.parseFloat(input[1]);
-            float dotTheta = Float.parseFloat(input[2]);
+            float dotTheta = Float.parseFloat(input[2]);            
             
-            // regular strategy
-            double theta = Math.acos(cosTheta);
-            if (sinTheta < 0) theta = -theta;            
-            double dotTheta_des = - 3 * theta;            
-            double torque_des = get_torque_des(dotTheta_des, dotTheta, theta);
-            double torque = _clip(torque_des, -2, 2);            
-            double newthdot = get_newthdot(dotTheta, theta, torque);            
-            System.err.println("desired dot " + dotTheta_des + " torque_des " + torque_des + " newthdot " + newthdot);
-            
-            // swing strategy
-            if (Math.abs(newthdot - dotTheta_des) > 1e-8 && Math.signum(newthdot) != Math.signum(dotTheta_des)) {
-            	if (theta > 0)
-            		dotTheta_des = Math.PI - dotTheta_des;
-            	else
-            		dotTheta_des = -Math.PI - dotTheta_des;
-            	torque_des = get_torque_des(dotTheta_des, dotTheta, theta);
-            	torque = _clip(torque_des, -2, 2);
-            	newthdot = get_newthdot(dotTheta, theta, torque);
-            	System.err.println("desired dot " + dotTheta_des + " torque_des " + torque_des + " newthdot " + newthdot);
-            }
-                                    
-            
-            
-            
-            // write output        
+            // write output
+	float torque = 1;
             System.out.println(torque);
         }
                 
